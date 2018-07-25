@@ -1,36 +1,61 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import * as LocationsAPI from './LocationsAPI';
+import MapContainer from './Map';
 
 
 class App extends Component {
   state = {
     query: '',
-    locations: [],
-    locationsName: '',
+    places: [],
+    placesName: '',
   }
 
   // search places from foursquare
 componentDidMount() {
     LocationsAPI.search('Venice', 'Museum')
-    .then(locations => {
-      this.setState({ locations });
+    .then(places => {
+      this.setState({ places });
     });
+  }
+
+  updateQuery = (query) => {
+   this.setState({ query: query.trim() });
+ }
+
+  updatePlace = (place) => {
+    this.setState({placesName: place});
   }
 
 
   render() {
-    const { query, locations, locationsName } = this.state;
+    const { query, places, placesName } = this.state;
+
+    let filteredPlaces;
+
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+      <div className="app">
+        <header className="app-header">
+
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <main className="main">
+          <section>
+            <div>
+
+            </div>
+          </section>
+          <section className="map-container">
+            <div>
+              <MapContainer
+                locatioms={filteredPlaces}
+                selectPlaces={placesName}
+              />
+
+            </div>
+
+          </section>
+        </main>
       </div>
     );
   }
