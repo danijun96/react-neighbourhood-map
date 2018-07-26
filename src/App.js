@@ -52,16 +52,19 @@ componentDidMount() {
       filterPlaces = places;
     }
 
-
     return (
       <div className="app">
         <header className="app-header">
+
           <h1 style={header}>Venice Museums</h1>
         </header>
         <main className="main">
           <section>
-            <div>
-
+            <div className="searchbar">
+              <SearchBar
+                query={this.updateQuery}
+                places={filterPlaces}
+                selectPlace={this.updatePlace}/>
             </div>
           </section>
           <section className="map-container">
