@@ -56,12 +56,44 @@ const Map = compose(
 
 
 class MapContainer extends Component {
+  state = {
+      selectId: ''
+    }
+
+//update SearchBar when click place
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      selectId: nextProps.selectPlace.id
+    });
+  }
+
+  handleMarkerClick = (selectId) => {
+  this.setState({ selectId });
+}
+
 
   render() {
+    const { places } = this.props;
+    const { selectId } = this.state;
+
+    let renderPlaces;
+    let clickPlace;
+
+  // render markers on click
+    if(selectId){
+      renderPlaces = places.filter(place => place.id !== selectId);
+      clickPlace = places.filter(place=>place.id === selectId);
+    } else {
+      renderPlaces = places;
+    }
+
 
     return (
       <Map
-
+        onMarkerClick={this.handleMarkerClick}
+        places={renderPlaces}
+        placeDetail={clickPlace}
+        onMapLoad={this.handleMapLoad}
       />
     );
   }
