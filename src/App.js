@@ -72,7 +72,7 @@ return (
       <button
         className="app-list"
         id="app-list"
-        tabIndex="1"
+        tabIndex="0"
         aria-label={ sidebarVisible ? "back arrow" : "bars icon" }
         onClick={ this.toggleSidebar }>
         <FontAwesomeIcon icon={ sidebarVisible ? faArrowLeft : faBars }/>
