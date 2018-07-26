@@ -25,7 +25,7 @@ const Map = compose(
   {props.placeDetail? props.placeDetail.map(place => (
     <Marker
       key={place.id}
-      position={{ lat: place.place.lat, lng: place.place.lng }}
+      position={{ lat: place.location.lat, lng: place.location.lng }}
       animation={window.google.maps.Animation.BOUNCE}>
       <InfoBox>
         <div className="box"

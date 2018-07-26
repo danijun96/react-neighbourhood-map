@@ -7,6 +7,7 @@ import SearchBar from './SearchBar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import faBars from '@fortawesome/fontawesome-free-solid/faBars';
 import faArrowLeft from '@fortawesome/fontawesome-free-solid/faArrowLeft';
+import foursquare from './Foursquare.svg';
 
 
 const header = {
@@ -88,7 +89,7 @@ return (
             selectPlace={this.updatePlace}/>
         </div>
       </section>
-      <section className="map-window">
+      <section className="map-container">
         <div>
           <MapContainer
             places={filteredPlaces}
@@ -98,7 +99,7 @@ return (
       </section>
     </main>
     <footer className="footer">
-      <p className="footer-text">Places are Powered by Foursquare</p>
+      <p className="footer-text">Places are Powered by <img src={foursquare} className="footer-logo" alt="Foursquare logo" /> Foursquare</p>
 
             </footer>
       </div>

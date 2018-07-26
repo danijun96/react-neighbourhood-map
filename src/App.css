@@ -55,8 +55,8 @@ li.list-group-item {
   transition: linear 0.2s;
  }
 
-section#sidebar.sidebar.open {
-  background-color: transparent;
+section#sidebar {
+  background: #0c0b0bff;
 }
  h1 {
    display: flex;
@@ -70,7 +70,7 @@ section#sidebar.sidebar.open {
   text-align: left;
 }
 
-.map-window {
+.map-container {
   width: 100%;
   height: 100%;
 }
@@ -128,7 +128,7 @@ footer {
 
   .sidebar {
     position: absolute;
-    opacity: 1
+    opacity: 1;
   }
 
 }
@@ -151,7 +151,7 @@ footer {
         position: relative;
     }
 
-    .map-window {
+    .map-container {
         width: calc(79% - 1px);
         z-index: 0;
  }
