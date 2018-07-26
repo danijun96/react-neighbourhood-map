@@ -1,3 +1,4 @@
+// Change map style
 export const mapStyle = [
   {
             featureType: 'water',
@@ -9,7 +10,7 @@ export const mapStyle = [
             elementType: 'labels.text.stroke',
             stylers: [
               { color: '#ffffff' },
-              { weight: 6 }
+              { weight: 7 }
             ]
           },{
             featureType: 'administrative',

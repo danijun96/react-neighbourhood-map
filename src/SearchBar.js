@@ -6,7 +6,7 @@ const listGroupItem = {
   fontSize: '0.9rem'
 };
 const listGroup = {
-  maxHeight: '79vh',
+  maxHeight: '85vh',
   overflow: 'scroll'
 }
 
