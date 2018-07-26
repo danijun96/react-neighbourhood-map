@@ -17,13 +17,14 @@ const header = {
 }
 
 class App extends Component {
-  state = {
-    query: '',
-    places: [],
-    placesName: '',
-  }
+    state = {
+      query: '',
+      places: [],
+      placesName: '',
+      sidebarVisible: false,
+}
 
-  // search places from foursquare
+// search places from foursquare
 componentDidMount() {
     LocationsAPI.search('Venice', 'Museum')
     .then(places => {
@@ -31,58 +32,78 @@ componentDidMount() {
     });
   }
 
-  updateQuery = (query) => {
-   this.setState({ query: query.trim() });
- }
+   updateQuery = (query) => {
+    this.setState({ query: query.trim() });
+  }
 
   updatePlace = (place) => {
     this.setState({placesName: place});
   }
 
-
-  render() {
-    const { query, places, placesName } = this.state;
-
-    let filterPlaces;
-    if (query) {
-      const match = new RegExp(escapeRegExp(query), 'i');
-      filterPlaces = places
-        .filter(place => match.test(place.name));
-    } else {
-      filterPlaces = places;
+  toggleSidebar = (sidebarVisible) => {
+        if (this.state.sidebarVisible) {
+            this.setState({
+                sidebarVisible: false
+            });
+        } else {
+            this.setState({
+                sidebarVisible: true
+            });
+        }
     }
 
-    return (
-      <div className="app">
-        <header className="app-header">
 
-          <h1 style={header}>Venice Museums</h1>
-        </header>
-        <main className="main">
-          <section>
-            <div className="searchbar">
-              <SearchBar
-                query={this.updateQuery}
-                places={filterPlaces}
-                selectPlace={this.updatePlace}/>
-            </div>
-          </section>
-          <section className="map-container">
-            <div>
-              <MapContainer
-                places={filterPlaces}
-                selectPlaces={placesName}
-              />
-            </div>
+render() {
 
-          </section>
-        </main>
-        <footer>
-          <p className="footer-text">Places are Powered by Foursquare</p>
-        </footer>
+  const { sidebarVisible } = this.state;
+  const { query, places, placesName } = this.state;
+  let filteredPlaces;
+    if (query) {
+      const match = new RegExp(escapeRegExp(query), 'i');
+      filteredPlaces = places
+        .filter(place => match.test(place.name));
+    } else {
+      filteredPlaces = places;
+    }
+
+return (
+  <div className="app">
+    <header className="app-header">
+      <button
+        className="app-list"
+        id="app-list"
+        tabIndex="1"
+        aria-label={ sidebarVisible ? "back arrow" : "bars icon" }
+        onClick={ this.toggleSidebar }>
+        <FontAwesomeIcon icon={ sidebarVisible ? faArrowLeft : faBars }/>
+      </button>
+      <h1 style={header}>Venice Museums</h1>
+    </header>
+    <main className="main">
+      <section className={ sidebarVisible ? "sidebar open" : "sidebar close" }  id="sidebar">
+        <div className="searchbar">
+          <SearchBar
+            query={this.updateQuery}
+            places={filteredPlaces}
+            selectPlace={this.updatePlace}/>
+        </div>
+      </section>
+      <section className="map-window">
+        <div>
+          <MapContainer
+            places={filteredPlaces}
+            selectPlace={placesName}
+          />
+        </div>
+      </section>
+    </main>
+    <footer className="footer">
+      <p className="footer-text">Places are Powered by Foursquare</p>
+
+            </footer>
       </div>
     );
   }
 }
 
-export default App;
+export default App

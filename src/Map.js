@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import { compose, withProps } from 'recompose';
-import { mapStyle } from './mapStyle.js'
 import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox';
+import { mapStyle } from './mapStyle.js'
 
 
 const Map = compose(
@@ -10,7 +10,8 @@ const Map = compose(
     googleMapURL: "https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=AIzaSyCcovUFOdIbTqFuhfFF7JB_OSdQ9_LmUfY&v=3",
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `calc(100vh - 34px)` }} />,
-    mapElement: <div style={{ height: `100%` }}/>
+    mapElement: <div style={{ height: `100%` }}
+                />
   }),
   withScriptjs,
   withGoogleMap
@@ -20,13 +21,14 @@ const Map = compose(
   ref={props.onMapLoad}
   defaultOptions={{styles: mapStyle}}
   defaultZoom={13}
-  defaultCenter={{ lat: 45.440847, lng: 12.315515 }}>
-
+  defaultCenter={{ lat: 45.440847, lng: 12.315515 }}
+>
   {props.placeDetail? props.placeDetail.map(place => (
     <Marker
       key={place.id}
-      position={{ lat: place.place.lat, lng: place.place.lng }}
-      animation={window.google.maps.Animation.BOUNCE}>
+      position={{ lat: place.location.lat, lng: place.location.lng }}
+      animation={window.google.maps.Animation.BOUNCE}
+    >
       <InfoBox>
         <div className="box"
         >
@@ -45,7 +47,7 @@ const Map = compose(
     <Marker
       key={place.id}
       title={place.name}
-      position={{ lat: place.place.lat, lng: place.place.lng }}
+      position={{ lat: place.location.lat, lng: place.location.lng }}
       onClick={() => props.onMarkerClick(place.id)}
     >
     </Marker>
@@ -54,13 +56,12 @@ const Map = compose(
 
 ));
 
-
 class MapContainer extends Component {
   state = {
-      selectId: ''
-    }
-
-//update SearchBar when click place
+    selectId: ''
+  }
+  // This is for tracing SearchList state, when item clicked
+  // selectId changed
   componentWillReceiveProps(nextProps) {
     this.setState({
       selectId: nextProps.selectPlace.id
@@ -68,8 +69,8 @@ class MapContainer extends Component {
   }
 
   handleMarkerClick = (selectId) => {
-  this.setState({ selectId });
-}
+    this.setState({ selectId });
+  }
 
 
   render() {
@@ -79,14 +80,13 @@ class MapContainer extends Component {
     let renderPlaces;
     let clickPlace;
 
-  // render markers on click
+    // If mark was click, render markers
     if(selectId){
       renderPlaces = places.filter(place => place.id !== selectId);
       clickPlace = places.filter(place=>place.id === selectId);
     } else {
       renderPlaces = places;
     }
-
 
     return (
       <Map
