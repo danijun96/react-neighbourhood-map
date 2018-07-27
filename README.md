@@ -57,3 +57,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * [Google Maps API](https://developers.google.com/maps/documentation/javascript/tutorial) -  this lets you customize maps with your own content and imagery for display on web pages and mobile devices.
 * [Foursquare API](https://developer.foursquare.com) - allows to get a list of locations within the neghbourhood.
 * [Google Fonts](https://fonts.google.com)
+* used [Foursquare [svg icon](https://www.flaticon.com/free-icon/foursquare_174850)
