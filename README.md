@@ -58,3 +58,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * [Foursquare API](https://developer.foursquare.com) - allows to get a list of locations within the neghbourhood.
 * [Google Fonts](https://fonts.google.com)
 * used [Foursquare [svg icon](https://www.flaticon.com/free-icon/foursquare_174850)
+
+## Build the app
+
+Note that the development build is not optimized. If you want to create a production build, use `npm run build`. Only in production mode the Service Worker will cache data.
