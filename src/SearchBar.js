@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const listGroupItem = {
-  listStyleType: "none",
+  listStyleType: 'none',
   cursor: 'pointer',
   fontSize: '0.9rem'
 };

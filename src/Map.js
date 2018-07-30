@@ -3,6 +3,7 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-map
 import { compose, withProps } from 'recompose';
 import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox';
 import { mapStyle } from './mapStyle.js'
+import ErrorBoundary from './ErrorBoundary'
 
 
 const Map = compose(
@@ -88,12 +89,14 @@ class MapContainer extends Component {
     }
 
     return (
-      <Map
-        onMarkerClick={this.handleMarkerClick}
-        places={renderPlaces}
-        placeDetail={clickPlace}
-        onMapLoad={this.handleMapLoad}
-      />
+      <ErrorBoundary>
+        <Map
+          onMarkerClick={this.handleMarkerClick}
+          places={renderPlaces}
+          placeDetail={clickPlace}
+          onMapLoad={this.handleMapLoad}
+        />
+      </ErrorBoundary>
     );
   }
 }
