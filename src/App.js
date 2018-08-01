@@ -18,11 +18,14 @@ const header = {
 }
 
 class App extends Component {
-    state = {
+  constructor(props) {
+  super(props);
+  this.state = {
       query: '',
       places: [],
       placesName: '',
       sidebarVisible: false,
+    };
 }
 
 // search places from foursquare

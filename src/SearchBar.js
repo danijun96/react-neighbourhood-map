@@ -30,7 +30,7 @@ class SearchBar extends Component {
       <div style={listGroup}>
         <ul className="list-group"
         >
-          {places.map(place => (
+          {places!==undefined && places.map(place => (
             <li
               className="list-group-item list-group-item-action"
               tabIndex="0"
