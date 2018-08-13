@@ -1,4 +1,4 @@
-# React Neighborhood Map
+# React Neighbourhood Map
 
 The project is part of Udacity FEND Program.
 This is a single page app that allows you to search museums in Venice, Italy. In this project I used [Foursquare](https://developer.foursquare.com/) API to get list of the places and Google Maps API to display places on the neghborhood map.
