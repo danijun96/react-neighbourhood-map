@@ -11,16 +11,12 @@ class ErrorBoundary extends Component {
 
 componentDidCatch(error, info) {
    // Display fallback UI
-  this.setState({ haveError: true });
+  this.setState({ hasError: true });
     console.log(error, info);
 }
   
- gm_authFailure(e) {
-   window.alert('Something went wrong with Google Maps' );
- }
   
 render() {
-  window.gm_authFailure = this.gm_authFailure;
   if (this.state.hasError) {
     return <p className="error">Something went wrong with Google Maps</p>
   }
