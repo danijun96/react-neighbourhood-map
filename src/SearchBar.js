@@ -6,8 +6,7 @@ const listGroupItem = {
   fontSize: '0.9rem'
 };
 const listGroup = {
-  maxHeight: '85vh',
-  overflow: 'scroll'
+  maxHeight: '85vh'
 }
 
 class SearchBar extends Component {
