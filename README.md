@@ -5,8 +5,7 @@ This is a single page app that allows you to search museums in Venice, Italy. In
 
 ## Install and Run the app
 
-* Clone this repo in your terminal with the command `git clone https://github.com/cristalnaya/react-neighbourhood-map.git`
-* or just download it to your computer
+* Clone this repo in your terminal with the command `git clone https://github.com/danijun96/react-neighbourhood-map.git`
 * open the terminal and run following commmands
 * change directory into `cd react-neighbourhood-map`
 * run `npm install` in your terminal
